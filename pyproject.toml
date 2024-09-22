@@ -9,7 +9,7 @@ readme = "README.md"
 homepage = "https://guitton.co/"
 repository = "https://github.com/louisguitton/spacy-lancedb-linker"
 documentation = "https://guitton.co/"
-keywords = ["spacy", "entity-linking", "ann", "lancedb"]
+keywords = ["spacy", "spacy-pipeline", "entity-linking", "ann", "lancedb"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
