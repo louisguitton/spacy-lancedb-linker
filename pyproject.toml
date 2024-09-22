@@ -1,0 +1,107 @@
+[tool.poetry]
+package-mode = true
+name = "spacy-lancedb-linker"
+version = "0.1.0"
+description = "spaCy pipeline component for ANN Entity Linking using LanceDB"
+license = "Apache-2.0"
+authors = ["Louis Guitton <admin@guitton.co>"]
+readme = "README.md"
+homepage = "https://guitton.co/"
+repository = "https://github.com/louisguitton/spacy-lancedb-linker"
+documentation = "https://guitton.co/"
+keywords = ["spacy", "entity-linking", "ann", "lancedb"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+lancedb = "^0.13.0"
+spacy = "^3.7.6"
+pydantic = "^2.9.2"
+sentence-transformers = "^3.1.1"
+tantivy = "^0.22.0"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.6.7"
+mypy = "^1.11.2"
+pytest = "^8.3.3"
+# https://python-poetry.org/docs/dependency-specification/#url-dependencies
+en_core_web_md = { url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_md-3.7.1/en_core_web_md-3.7.1.tar.gz" }
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.ruff]
+# https://docs.astral.sh/ruff/configuration/
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+]
+line-length = 88
+indent-width = 4
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]
+ignore = []
+fixable = ["ALL"]
+unfixable = []
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+extend-select = ["I"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+docstring-code-format = false
+docstring-code-line-length = "dynamic"
+
+[tool.ruff.per-file-ignores]
+"tests/**" = [
+    "S101", # Use of `assert` detected
+    "D103", # Missing docstring in public function
+]
+
+[tool.mypy]
+# https://mypy.readthedocs.io/en/stable/config_file.html#example-pyproject-toml
+disallow_untyped_defs = true # Functions need to be annotated
+warn_unused_ignores = true
+exclude = [
+    "spacy_lancedb_linker-\\d+", # Ignore temporary folder created by setuptools when building an sdist
+    "venv.*/",
+    "build/",
+    "dist/",
+]
