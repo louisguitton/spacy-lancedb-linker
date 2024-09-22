@@ -1,7 +1,7 @@
 [tool.poetry]
 package-mode = true
 name = "spacy-lancedb-linker"
-version = "0.1.1"
+version = "0.1.2"
 description = "spaCy pipeline component for ANN Entity Linking using LanceDB"
 license = "Apache-2.0"
 authors = ["Louis Guitton <admin@guitton.co>"]
